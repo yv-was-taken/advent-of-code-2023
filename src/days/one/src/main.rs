@@ -89,20 +89,20 @@ fn main() {
             acc.push(c);
             Some((index, acc.clone()))
         })
-        .filter_map(|(index, potential_num)| {
-            if num_strings.contains(&potential_num.as_str()) {
-                Some(index - potential_num.len() + 1)
-            } else {
-                None
-            }
-        })
-        .next()
+    .filter_map(|(index, potential_num)| {
+        if num_strings.contains(&potential_num.as_str()) {
+            Some(index.checked_sub(potential_num.len())?.checked_add(1)?)
+        } else {
+            None
+        }
+    })
+    .next()
         .map(|start| {
             let end = start + num_strings[0].len();
             line.replace_range(start..end, "1"); // Replace with the integer version (1 in this case)
-            line.clone()
+        line.clone()
         })
-        .unwrap_or(line.clone());
+    .unwrap_or(line.clone());
 
     println!("Original line: {}", line);
     println!("Replaced line: {}", replaced_line);
