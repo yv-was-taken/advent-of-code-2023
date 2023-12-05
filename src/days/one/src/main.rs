@@ -69,6 +69,15 @@ fn extract_first_last_numbers(line: &str) -> u32 {
 }
 
 
+
+//@dev note to future self
+//commenting out the main fn that actually iterates through the file because I just want to see if
+//it actually does replace the numstring with the num for each line
+//after that we're home free
+//intended behaviour of the fn is to iterate through each line and return the before and after
+//parsing the line, supposed to replace each num string with num, 
+//but fn not working atm
+//ttfn!
 fn main() {
     let num_strings = vec!["one", "two", "three", "four", "five", "six", "seven", "eight", "nine"];
     let mut line = String::from("onetwothree");
